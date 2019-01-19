@@ -1,0 +1,16 @@
+---
+- hosts: all
+  tasks:
+  - name: make direcotry
+    #shell: mkdir /root/.ssh
+    file:
+      path: "/root/.ssh"
+      state: directory
+  - name: create empty file
+    file:
+      path: "/root/.ssh/authorized_keys"
+      state: touch
+  - name: put pubkey
+    lineinfile:
+      path: "/root/.ssh/authorized_keys"
+      line: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDaAt0Rlb5+DvW4IgeBB19Ur69ZGou2zKv9R3Rg17k4bngwfvbDEaZy8ong0N7MvgYhrwbTqk99VvJcN6OiR48cPnBCfVbbqqaLdfL+P13Fdo8GXBevizIaM3rsgwsNQShE3qX/NMfJYRYoTZy9RHtkyIdSO6i+Wy+QRLu0gTURCzUwk/YFA3Q2h9bGZPaRxnl+FBrHte2OasSy88ZSjZ3+KK1iO8MlxeRCdKxOyls6lnUDQ9jiblozAdq+4bBNobC1fAHE3EhhGE1yQakkVnvTTK54y3ExSJ1KRQCfbWlDLrDqmzU2wJEA3Oe1elg82bAtX+e8iWnIyVLZLxLdaheh george@george-HP-ProBook-430-G5"
